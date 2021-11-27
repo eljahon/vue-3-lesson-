@@ -1,30 +1,46 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <my-input v-model.number="parson.name"/>
+    <button class="button">Add</button>
+    <input v-model="input" type="text">
   </div>
-  <router-view/>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+// import { toRefs } from 'vue'
+// import Mydialog from "./components/mydialog/mydialog";
+import axios from 'axios'
+export default {
+  data () {
+    return {
+      parson: {
+        name: ''
+      },
+      input: ''
+    }
+  },
+  methods: {
+   async fechdata () {
+      try {
+const response = await  axios.get('https://jsonplaceholder.typicode.com/posts/1/comments')
+        console.log(response)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  },
+  mounted() {
+    this.fechdata()
+  },
+  watch: {
+    input (event)  {
+      console.log(event)
+    }
+  }
 }
+</script>
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+<style scoped>
+.button {
 }
 </style>
