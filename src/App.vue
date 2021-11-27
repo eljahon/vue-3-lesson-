@@ -3,6 +3,10 @@
     <my-input v-model.number="parson.name"/>
     <button class="button">Add</button>
     <input v-model="input" type="text">
+    <div>
+      salom
+      <h1>ADFADASDDF</h1>
+    </div>
   </div>
 </template>
 
